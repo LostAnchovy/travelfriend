@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <style>
+       .container{
+		padding: 50px;
+		background-color:whitesmoke;
+		width: 900px;
+		border-radius: 10px;
+		margin-top: 50px;
+	}
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome</h1>
+            <p>register here!</p>
+            <div class="messages">
+              {% for message in messages %}
+              <p>{{ message }}</p>
+                 {% endfor %}
+                </div>
+        <form action="/register" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Name</label>
+                <input type='type' class="form-control" placeholder="enter name" name="name">
+            </div>
+            <div class="form-group">
+                <label>username</label>
+                <input type='text' class="form-control" placeholder="username" name="username">
+            </div>
+            <div class="form-group">
+                <label>password</label>
+                <input type='password' class="form-control" placeholder="password here" name="password">
+            </div>
+            <div class="form-group">
+                <label> confirm password</label>
+                <input type='password' class="form-control" placeholder="password here" name="cpassword">
+            </div>
+            <button class="btn btn-primary" type="submit">Register</button>
+            <br>
+            <hr>
+        </form>
+
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                    <label>username</label>
+                    <input type='text' class="form-control" placeholder="username" name="username">
+            </div>
+            <div class="form-group">
+                    <label>password</label>
+                    <input type='password' class="form-control" placeholder="password" name="password">
+            </div>
+            <button class="btn btn-primary" type="submit">login</button>
+        </form>
+    </div>
+    </body>
+</html>
